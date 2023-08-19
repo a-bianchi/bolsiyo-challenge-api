@@ -111,7 +111,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-- Npm (>=8.0.0)
+- Npm (>=9.0.0)
 - Yarn (>= 1.22.0)
 - Node (>=18.0.0)
 
