@@ -1,0 +1,24 @@
+{
+	"info": {
+		"_postman_id": "c672bb2b-b319-4d71-8408-12e33db1ce19",
+		"name": "Challegen Bolsiyo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22995382"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
