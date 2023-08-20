@@ -1,9 +1,19 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { PingController } from './ping.controller';
+import { UserService } from './user/user.service';
+import { UserModule } from './user/user.module';
+import { ormConfig } from './config';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true })],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync({
+      useFactory: () => ormConfig,
+    }),
+    UserModule,
+  ],
   controllers: [PingController],
   providers: [],
 })
