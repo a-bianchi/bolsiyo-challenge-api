@@ -2,35 +2,38 @@ version: '3.8'
 
 services:
   api:
-    container_name: api-test
+    container_name: api-bolsiyo
     build:
       context: .
       dockerfile: ./Dockerfile
       target: development
-    command: yarn start:dev api
+    command: yarn start:dev api-bolsiyo
     env_file:
       - ./.env
     restart: always
     depends_on:
-      - db_mongo
+      - db
     volumes:
-      - .:/usr/src
-      - /usr/src/node_modules
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
-      - '3000:3000'
-
-  db_mongo:
-    container_name: db_mongo
-    image: mongo:5.0.9
-    restart: always
+      - "3000:3000"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password123
+      - PORT=3000
+      - NODE_ENV=development
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: bolsiyo
+      MYSQL_USER: bolsiyo
+      MYSQL_PASSWORD: bolsiyo
+    container_name: db-bolsiyo
     ports:
-      - "27017:27017"
+      - "3306:3306"
     volumes:
-      - 'mongodb_data:/data/db'
+      - db_data:/var/lib/mysql
 
 volumes:
-  mongodb_data:
-    driver: local
+  db_data:
