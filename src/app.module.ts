@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { PingController } from './ping.controller';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ConfigModule.forRoot({ isGlobal: true })],
+  controllers: [PingController],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  static port: number;
+  constructor(private readonly configService: ConfigService) {
+    AppModule.port = +this.configService.get('PORT') || 3000;
+  }
+}
