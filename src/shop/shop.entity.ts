@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Index('shop_name_index', ['name'], { unique: true })
+@Index('shop_name_userId_index', ['name', 'userId'], { unique: true })
 export class Shop {
   @PrimaryGeneratedColumn()
   id: number;

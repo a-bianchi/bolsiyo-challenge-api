@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Index('category_name_index', ['name'], { unique: true })
+@Index('category_name_shopId_index', ['name', 'shopId'], { unique: true })
 export class Category {
   @PrimaryGeneratedColumn()
   id?: number;

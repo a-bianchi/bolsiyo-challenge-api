@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNumber, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsString, IsNumber, IsNotEmpty } from 'class-validator';
 
-export class CategoryCreateDto {
+export class CategoryResponseDto {
   @ApiProperty({
     type: Number,
     description: 'Id of the category',
     default: '1',
   })
   @IsNumber()
-  @IsOptional()
-  id?: number;
+  @IsNotEmpty()
+  id: number;
 
   @ApiProperty({
     type: String,
