@@ -4,11 +4,14 @@ import { Repository, UpdateResult } from 'typeorm';
 import { Product } from './product.entity';
 import { QueryOptions } from './types';
 import { ProductUpdateDto } from './dto/product.update.dto';
+import { StockMovement } from 'src/stock-movement/stock-movement.entity';
 
 @Injectable()
 export class ProductService {
   constructor(
     @InjectRepository(Product) private productRepository: Repository<Product>,
+    @InjectRepository(StockMovement)
+    private stockMovementRepository: Repository<StockMovement>,
   ) {}
 
   async getProductsByShopId(queryOptions: QueryOptions): Promise<Product[]> {
@@ -28,11 +31,25 @@ export class ProductService {
     return this.productRepository.findOne({ where: { id } });
   }
 
-  async updateStock(id: number, quantity: number): Promise<UpdateResult> {
-    return this.productRepository.update(id, { stock: quantity });
-  }
-
   async deleteProduct(productId: number): Promise<UpdateResult> {
     return this.productRepository.softDelete(productId);
+  }
+
+  async loadUnitsToStock(productId: number, quantity: number): Promise<void> {
+    const product = await this.productRepository.findOne({
+      where: { id: productId },
+    });
+
+    if (!product) {
+      throw new Error('Product not found');
+    }
+
+    await this.productRepository.update(productId, { stock: quantity });
+
+    const stockMovement = new StockMovement();
+    stockMovement.productId = productId;
+    stockMovement.stock = quantity;
+    stockMovement.timestamp = new Date();
+    await this.stockMovementRepository.save(stockMovement);
   }
 }
