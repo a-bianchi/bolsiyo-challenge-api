@@ -29,3 +29,7 @@ VALUES(1, 'test@test.com', '$2b$10$Z8hN36twz.uLpuL5NrURzuKLERygmg4/FKO7NvNd.ufc9
 INSERT INTO bolsiyo.shop
 (id, name, userId)
 VALUES(1, 'Test Shop', 1);
+
+INSERT INTO bolsiyo.category
+(name, shopId)
+VALUES('bebidas', 1);

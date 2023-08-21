@@ -1,4 +1,5 @@
 import { Category } from 'src/category/category.entity';
+import { Product } from 'src/product/product.entity';
 import { User } from 'src/user/user.entity';
 import {
   Entity,
@@ -26,4 +27,7 @@ export class Shop {
 
   @OneToMany(() => Category, (category) => category.shop)
   category: Category[];
+
+  @OneToMany(() => Product, (product) => product.shop)
+  product: Product[];
 }

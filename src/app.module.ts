@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { ormConfig } from './config';
 import { ShopModule } from './shop/shop.module';
 import { CategoryModule } from './category/category.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CategoryModule } from './category/category.module';
     UserModule,
     ShopModule,
     CategoryModule,
+    ProductModule,
   ],
   controllers: [PingController],
   providers: [],

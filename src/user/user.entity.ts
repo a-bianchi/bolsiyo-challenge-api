@@ -15,9 +15,6 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => Shop, (shop) => shop.user)
-  shop: Shop;
-
   @Column({ length: 250, unique: true })
   email: string;
 
@@ -26,6 +23,9 @@ export class User {
 
   @Column({ default: false })
   isActive: boolean;
+
+  @OneToOne(() => Shop, (shop) => shop.user)
+  shop: Shop;
 
   @CreateDateColumn()
   createdAt: Date;
