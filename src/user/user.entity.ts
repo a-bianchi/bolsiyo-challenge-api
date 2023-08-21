@@ -1,25 +1,25 @@
+import { Shop } from 'src/shop/shop.entity';
 import {
-  BeforeInsert,
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
   Index,
+  OneToOne,
 } from 'typeorm';
-import { v4 as uuidv4 } from 'uuid';
 
 @Entity()
 @Index('user_email_index', ['email'], { unique: true })
 export class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @OneToOne(() => Shop, (shop) => shop.user)
+  shop: Shop;
 
   @Column({ length: 250, unique: true })
   email: string;
-
-  @Column({ length: 250 })
-  email_canonical: string;
 
   @Column({ length: 250 })
   password: string;
@@ -32,9 +32,4 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
-
-  @BeforeInsert()
-  generateId() {
-    this.id = uuidv4();
-  }
 }

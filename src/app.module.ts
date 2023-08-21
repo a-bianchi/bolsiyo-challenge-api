@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PingController } from './ping.controller';
-import { UserService } from './user/user.service';
 import { UserModule } from './user/user.module';
 import { ormConfig } from './config';
+import { ShopModule } from './shop/shop.module';
 
 @Module({
   imports: [
@@ -13,6 +13,7 @@ import { ormConfig } from './config';
       useFactory: () => ormConfig,
     }),
     UserModule,
+    ShopModule,
   ],
   controllers: [PingController],
   providers: [],
