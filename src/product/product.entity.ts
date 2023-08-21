@@ -7,9 +7,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { Shop } from 'src/shop/shop.entity';
 import { Category } from 'src/category/category.entity';
+import { StockMovement } from 'src/stock-movement/stock-movement.entity';
 
 @Entity()
 @Index('product_name_shopId_categoryId_index', ['name', 'shopId', 'categoryId'])
@@ -40,6 +42,9 @@ export class Product {
 
   @ManyToOne(() => Category, (category) => category.product)
   category?: Category;
+
+  @OneToMany(() => StockMovement, (stockMovement) => stockMovement.product)
+  stockMovements?: StockMovement[];
 
   @CreateDateColumn()
   createdAt?: Date;
