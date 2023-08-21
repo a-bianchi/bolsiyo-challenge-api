@@ -9,4 +9,5 @@ export const ormConfig: DataSourceOptions = {
   database: process.env.MYSQL_DATABASE || 'bolsiyo',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: true,
+  logging: process.env.NODE_ENV !== 'production',
 };
