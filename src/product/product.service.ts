@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EntityManager, Repository, Transaction, UpdateResult } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { Product } from './product.entity';
 import { QueryOptions } from './types';
 import { ProductUpdateDto } from './dto/product.update.dto';
