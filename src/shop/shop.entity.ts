@@ -1,3 +1,4 @@
+import { Category } from 'src/category/category.entity';
 import { User } from 'src/user/user.entity';
 import {
   Entity,
@@ -5,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   Index,
+  OneToMany,
 } from 'typeorm';
 
 @Entity()
@@ -16,6 +18,12 @@ export class Shop {
   @Column({ length: 250 })
   name: string;
 
+  @Column()
+  userId: number;
+
   @ManyToOne(() => User, (user) => user.shop)
   user: User;
+
+  @OneToMany(() => Category, (category) => category.shop)
+  category: Category[];
 }

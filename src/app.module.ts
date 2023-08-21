@@ -5,6 +5,7 @@ import { PingController } from './ping.controller';
 import { UserModule } from './user/user.module';
 import { ormConfig } from './config';
 import { ShopModule } from './shop/shop.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ShopModule } from './shop/shop.module';
     }),
     UserModule,
     ShopModule,
+    CategoryModule,
   ],
   controllers: [PingController],
   providers: [],
