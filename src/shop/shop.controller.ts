@@ -6,7 +6,7 @@ export class ShopController {
   constructor(private readonly shopService: ShopService) {}
 
   @Get('user/:userId')
-  async getShopByUserId(@Param('userId') userId: number) {
+  async getShopByUserId(@Param('userId') userId: string) {
     return this.shopService.getShopByUserId(userId);
   }
 }

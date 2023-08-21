@@ -9,7 +9,7 @@ export class ShopService {
     @InjectRepository(Shop) private shopRepository: Repository<Shop>,
   ) {}
 
-  async getShopByUserId(userId: number): Promise<Shop | undefined> {
+  async getShopByUserId(userId: string): Promise<Shop | undefined> {
     return await this.shopRepository.findOne({
       where: { user: { id: userId } },
     });

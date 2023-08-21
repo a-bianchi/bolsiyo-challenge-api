@@ -8,6 +8,7 @@ import { ShopModule } from './shop/shop.module';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { ReportModule } from './report/report.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ReportModule } from './report/report.module';
     CategoryModule,
     ProductModule,
     ReportModule,
+    AuthModule,
   ],
   controllers: [PingController],
   providers: [],

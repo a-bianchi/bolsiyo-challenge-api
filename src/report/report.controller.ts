@@ -1,7 +1,6 @@
 import { Controller, Get, HttpCode, HttpStatus, Query } from '@nestjs/common';
 import { ApiForbiddenResponse, ApiOkResponse } from '@nestjs/swagger';
 import { CommonForbiddenErrorDto } from 'src/common/dto';
-import { Product } from 'src/product/product.entity';
 import { ReportService } from './report.service';
 import { ReportResponseDto } from './dto';
 import { format, parse } from 'date-fns';

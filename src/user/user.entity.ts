@@ -12,14 +12,17 @@ import {
 @Entity()
 @Index('user_email_index', ['email'], { unique: true })
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ length: 250, unique: true })
   email: string;
 
   @Column({ length: 250 })
   password: string;
+
+  @Column()
+  hashrt: string;
 
   @Column({ default: false })
   isActive: boolean;

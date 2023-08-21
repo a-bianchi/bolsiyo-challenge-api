@@ -20,7 +20,7 @@ export class Shop {
   name: string;
 
   @Column()
-  userId: number;
+  userId: string;
 
   @ManyToOne(() => User, (user) => user.shop)
   user: User;
