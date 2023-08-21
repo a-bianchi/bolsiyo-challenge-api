@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, UpdateResult } from 'typeorm';
+import { EntityManager, Repository, Transaction, UpdateResult } from 'typeorm';
 import { Product } from './product.entity';
 import { QueryOptions } from './types';
 import { ProductUpdateDto } from './dto/product.update.dto';
@@ -35,21 +35,25 @@ export class ProductService {
     return this.productRepository.softDelete(productId);
   }
 
-  async loadUnitsToStock(productId: number, quantity: number): Promise<void> {
-    const product = await this.productRepository.findOne({
-      where: { id: productId },
+  async updateStock(productId: number, quantity: number): Promise<void> {
+    await this.productRepository.manager.transaction(async (manager) => {
+      const product = await manager.findOne(Product, {
+        where: { id: productId },
+      });
+
+      if (!product) {
+        throw new Error('Product not found');
+      }
+
+      await manager.update(Product, productId, {
+        stock: quantity,
+      });
+
+      const stockMovement = new StockMovement();
+      stockMovement.productId = productId;
+      stockMovement.stock = quantity;
+      stockMovement.timestamp = new Date();
+      await manager.save(StockMovement, stockMovement);
     });
-
-    if (!product) {
-      throw new Error('Product not found');
-    }
-
-    await this.productRepository.update(productId, { stock: quantity });
-
-    const stockMovement = new StockMovement();
-    stockMovement.productId = productId;
-    stockMovement.stock = quantity;
-    stockMovement.timestamp = new Date();
-    await this.stockMovementRepository.save(stockMovement);
   }
 }

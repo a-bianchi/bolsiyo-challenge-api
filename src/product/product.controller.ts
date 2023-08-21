@@ -116,10 +116,7 @@ export class ProductController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateProductStockDto: ProductUpdateStockDto,
   ): Promise<boolean> {
-    await this.productService.loadUnitsToStock(
-      id,
-      updateProductStockDto.quantity,
-    );
+    await this.productService.updateStock(id, updateProductStockDto.quantity);
     return true;
   }
 
