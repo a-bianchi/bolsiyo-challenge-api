@@ -4,7 +4,7 @@ import { Repository, UpdateResult } from 'typeorm';
 import { Product } from './product.entity';
 import { QueryOptions } from './types';
 import { ProductUpdateDto } from './dto/product.update.dto';
-import { StockMovement } from 'src/stock-movement/stock-movement.entity';
+import { StockMovement } from '../stock-movement/stock-movement.entity';
 
 @Injectable()
 export class ProductService {

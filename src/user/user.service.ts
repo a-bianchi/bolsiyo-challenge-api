@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { Tokens } from 'src/auth/types';
+import { Tokens } from '../auth/types';
 import * as bycryptjs from 'bcryptjs';
 import { v4 as uuid } from 'uuid';
-import { Role } from 'src/role/types';
+import { Role } from '../role/types';
 
 @Injectable()
 export class UserService {

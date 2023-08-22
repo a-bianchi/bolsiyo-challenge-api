@@ -24,7 +24,7 @@ import { Product } from './product.entity';
 import {
   CommonBadRequestErrorDto,
   CommonForbiddenErrorDto,
-} from 'src/common/dto';
+} from '../common/dto';
 import {
   ProductCreateDto,
   ProductResponseDto,
@@ -32,8 +32,8 @@ import {
   ProductUpdateStockDto,
 } from './dto';
 import { QueryOptions } from './types';
-import { RoleGuard } from 'src/role/role.guard';
-import { Role } from 'src/role/role.decorator';
+import { RoleGuard } from '../role/role.guard';
+import { Role } from '../role/role.decorator';
 
 @Controller('product')
 export class ProductController {

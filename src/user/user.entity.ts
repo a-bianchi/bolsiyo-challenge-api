@@ -1,5 +1,5 @@
-import { Role } from 'src/role/role.entity';
-import { Shop } from 'src/shop/shop.entity';
+import { Role } from '../role/role.entity';
+import { Shop } from '../shop/shop.entity';
 import {
   Entity,
   Column,

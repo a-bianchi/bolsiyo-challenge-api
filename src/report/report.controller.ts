@@ -11,12 +11,12 @@ import {
   ApiOkResponse,
   ApiBearerAuth,
 } from '@nestjs/swagger';
-import { CommonForbiddenErrorDto } from 'src/common/dto';
+import { CommonForbiddenErrorDto } from '../common/dto';
 import { ReportService } from './report.service';
 import { ReportResponseDto } from './dto';
 import { format, parse } from 'date-fns';
-import { Role } from 'src/role/role.decorator';
-import { RoleGuard } from 'src/role/role.guard';
+import { Role } from '../role/role.decorator';
+import { RoleGuard } from '../role/role.guard';
 
 @Controller('report')
 export class ReportController {

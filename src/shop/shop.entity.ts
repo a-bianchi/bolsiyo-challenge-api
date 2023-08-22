@@ -1,6 +1,6 @@
-import { Category } from 'src/category/category.entity';
-import { Product } from 'src/product/product.entity';
-import { User } from 'src/user/user.entity';
+import { Category } from '../category/category.entity';
+import { Product } from '../product/product.entity';
+import { User } from '../user/user.entity';
 import {
   Entity,
   Column,
@@ -23,11 +23,11 @@ export class Shop {
   userId: string;
 
   @ManyToOne(() => User, (user) => user.shop)
-  user: User;
+  user?: User;
 
   @OneToMany(() => Category, (category) => category.shop)
-  category: Category[];
+  category?: Category[];
 
   @OneToMany(() => Product, (product) => product.shop)
-  product: Product[];
+  product?: Product[];
 }

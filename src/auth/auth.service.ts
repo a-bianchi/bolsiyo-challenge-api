@@ -3,7 +3,7 @@ import {
   ForbiddenException,
   Injectable,
 } from '@nestjs/common';
-import { UserService } from 'src/user/user.service';
+import { UserService } from '../user/user.service';
 import { AuthDto } from './dto';
 import { Tokens } from './types';
 import * as bycryptjs from 'bcryptjs';

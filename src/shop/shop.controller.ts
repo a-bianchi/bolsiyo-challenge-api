@@ -1,7 +1,7 @@
 import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { ShopService } from './shop.service';
 import { Role } from '../role/role.decorator';
-import { RoleGuard } from 'src/role/role.guard';
+import { RoleGuard } from '../role/role.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('shop')

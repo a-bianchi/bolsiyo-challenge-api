@@ -20,13 +20,9 @@ import {
   ErrorSignUpAuthDto,
   TokenDtoResponse,
 } from './dto';
-import {
-  Public,
-  GetCurrentUserId,
-  GetCurrentUser,
-} from 'src/common/decorators';
+import { Public, GetCurrentUserId, GetCurrentUser } from '../common/decorators';
 import { ErrorSignInAuthDto } from './dto/auth.singin.error.dto';
-import { AtGuard, RtGuard } from 'src/common/guards';
+import { AtGuard, RtGuard } from '../common/guards';
 
 @Controller('auth')
 export class AuthController {

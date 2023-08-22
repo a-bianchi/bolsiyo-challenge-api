@@ -9,9 +9,9 @@ import {
   DeleteDateColumn,
   OneToMany,
 } from 'typeorm';
-import { Shop } from 'src/shop/shop.entity';
-import { Category } from 'src/category/category.entity';
-import { StockMovement } from 'src/stock-movement/stock-movement.entity';
+import { Shop } from '../shop/shop.entity';
+import { Category } from '../category/category.entity';
+import { StockMovement } from '../stock-movement/stock-movement.entity';
 
 @Entity()
 @Index('product_name_shopId_categoryId_index', ['name', 'shopId', 'categoryId'])

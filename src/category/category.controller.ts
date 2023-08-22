@@ -22,9 +22,9 @@ import {
 import {
   CommonBadRequestErrorDto,
   CommonForbiddenErrorDto,
-} from 'src/common/dto';
-import { RoleGuard } from 'src/role/role.guard';
-import { Role } from 'src/role/role.decorator';
+} from '../common/dto';
+import { RoleGuard } from '../role/role.guard';
+import { Role } from '../role/role.decorator';
 
 @Controller('category')
 export class CategoryController {
