@@ -17,10 +17,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
@@ -65,11 +61,8 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -106,37 +99,45 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+The environment necessary to run the service locally is detailed below.
 
 ### Prerequisites
 
 - Npm (>=9.0.0)
-- Yarn (>= 1.22.0)
+- Yarn (>=1.22.0)
 - Node (>=18.0.0)
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+- Docker (>=4.21.1)
+  
+To run mysql database and service in the same container use the following command.
+* bash
   ```sh
-  npm install npm@latest -g
+  make start
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
-3. Install NPM packages
+2. To run mysql database and service in the same container use the following command
    ```sh
-   npm install
+   make start
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Wait a few seconds for the containers to run and the migrations to be executed
+   1. If the "api-pocket" container fails, you can test it from vscode with the following command
+      ```sh
+      yarn start:dev
+      ```
+5. Import the [postman collection](https://github.com/a-bianchi/bolsiyo-challenge-api/apiDocumentation/Challegen Bolsiyo.postman_collection.json) to be able to test (apiDocumentation folder)
+6. In the browser go to http://localhost:3000/documentation, to see the documentation
+7. You can test if the service is running
+   ```sh
+   curl -X 'GET' \
+   'http://localhost:3000/ping' \
+   -H 'accept: */*'
    ```
-
+   
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -146,16 +147,11 @@ This is an example of how to list things you need to use the software and how to
 
 ```bash
 # development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
+$ yarn start:dev
 
 # production mode
-$ yarn run start:prod
+$ yarn start:prod
 ```
-
-_Postman collection [Documentation](https://github.com/a-bianchi/bolsiyo-challenge-api/apiDocumentation/Challegen Bolsiyo.postman_collection.json)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -174,17 +170,6 @@ $ yarn run test:e2e
 # test coverage
 $ yarn run test:cov
 ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
