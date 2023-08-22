@@ -1,3 +1,4 @@
+import { Role } from 'src/role/role.entity';
 import { Shop } from 'src/shop/shop.entity';
 import {
   Entity,
@@ -11,9 +12,13 @@ import {
 
 @Entity()
 @Index('user_email_index', ['email'], { unique: true })
+@Index('user_role_index', ['roleId'], { unique: true })
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column({ default: 1 })
+  roleId: number;
 
   @Column({ length: 250, unique: true })
   email: string;
@@ -29,6 +34,9 @@ export class User {
 
   @OneToOne(() => Shop, (shop) => shop.user)
   shop: Shop;
+
+  @OneToOne(() => Role, (role) => role.user)
+  role: Role;
 
   @CreateDateColumn()
   createdAt: Date;

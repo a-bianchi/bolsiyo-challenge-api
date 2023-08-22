@@ -12,6 +12,7 @@ import { AuthModule } from './auth/auth.module';
 
 import { APP_GUARD } from '@nestjs/core';
 import { AtGuard } from './common/guards';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AtGuard } from './common/guards';
     ProductModule,
     ReportModule,
     AuthModule,
+    RoleModule,
   ],
   controllers: [PingController],
   providers: [
