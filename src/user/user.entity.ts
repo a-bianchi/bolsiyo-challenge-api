@@ -21,10 +21,10 @@ export class User {
   @Column({ length: 250 })
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   hashrt: string;
 
-  @Column({ default: false })
+  @Column({ default: true })
   isActive: boolean;
 
   @OneToOne(() => Shop, (shop) => shop.user)

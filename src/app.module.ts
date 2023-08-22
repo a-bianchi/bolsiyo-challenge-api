@@ -10,6 +10,9 @@ import { ProductModule } from './product/product.module';
 import { ReportModule } from './report/report.module';
 import { AuthModule } from './auth/auth.module';
 
+import { APP_GUARD } from '@nestjs/core';
+import { AtGuard } from './common/guards';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -24,7 +27,12 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
   controllers: [PingController],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AtGuard,
+    },
+  ],
 })
 export class AppModule {
   static port: number;

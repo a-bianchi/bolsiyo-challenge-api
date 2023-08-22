@@ -38,7 +38,32 @@ export class AuthService {
 
     const tokens = await this.userService.getTokens(userDb.id, userDb.email);
 
-    await this.userService.updateRtUser(userDb.user_id, tokens.refresh_token);
+    await this.userService.updateRtUser(userDb.id, tokens.refresh_token);
+
+    return tokens;
+  }
+
+  async logout(userId: string): Promise<boolean> {
+    const user = await this.userService.getUserById(userId);
+    if (!user) throw new ForbiddenException('Access Denied');
+
+    await this.userService.updateRtUser(user.id);
+
+    return true;
+  }
+
+  async refreshTokens(userId: string, rt: string): Promise<Tokens> {
+    const userDb = await this.userService.getUserById(userId);
+
+    if (!userDb || !userDb.hashrt)
+      throw new ForbiddenException('Access Denied');
+
+    const rtMatches = await bycryptjs.compare(rt, userDb.hashrt);
+
+    if (!rtMatches) throw new ForbiddenException('Access Denied');
+
+    const tokens = await this.userService.getTokens(userDb.id, userDb.email);
+    await this.userService.updateRtUser(userDb.id, tokens.refresh_token);
 
     return tokens;
   }

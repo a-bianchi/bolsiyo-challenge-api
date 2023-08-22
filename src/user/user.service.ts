@@ -20,9 +20,9 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  async getUser(_id: string): Promise<User[]> {
-    return await this.userRepository.find({
-      select: ['id', 'email', 'isActive', 'createdAt', 'updatedAt'],
+  async getUserById(_id: string): Promise<User> {
+    return await this.userRepository.findOne({
+      select: ['id', 'email', 'isActive', 'hashrt', 'createdAt', 'updatedAt'],
       where: [{ id: _id }],
     });
   }
@@ -45,7 +45,7 @@ export class UserService {
       const tokens = await this.getTokens(userId, email);
       const hashrt = await bycryptjs.hash(tokens.refresh_token, 10);
 
-      const newUser = await this.userRepository.create({
+      const newUser = await this.userRepository.save({
         id: userId,
         email,
         password: hash,
