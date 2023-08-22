@@ -7,6 +7,7 @@ import { ConfigService } from '@nestjs/config';
 import { Tokens } from 'src/auth/types';
 import * as bycryptjs from 'bcryptjs';
 import { v4 as uuid } from 'uuid';
+import { Role } from 'src/role/types';
 
 @Injectable()
 export class UserService {
@@ -22,15 +23,33 @@ export class UserService {
 
   async getUserById(_id: string): Promise<User> {
     return await this.userRepository.findOne({
-      select: ['id', 'email', 'isActive', 'hashrt', 'createdAt', 'updatedAt'],
-      where: [{ id: _id }],
+      select: [
+        'id',
+        'email',
+        'isActive',
+        'hashrt',
+        'roleId',
+        'createdAt',
+        'updatedAt',
+      ],
+      where: { id: _id },
+      relations: ['role'],
     });
   }
 
   async getUserByEmail(email: string): Promise<User> {
     return await this.userRepository.findOne({
-      select: ['id', 'email', 'password', 'isActive', 'createdAt', 'updatedAt'],
-      where: [{ email: email }],
+      select: [
+        'id',
+        'email',
+        'password',
+        'isActive',
+        'roleId',
+        'createdAt',
+        'updatedAt',
+      ],
+      where: { email: email },
+      relations: ['role'],
     });
   }
 
@@ -42,7 +61,7 @@ export class UserService {
 
       const userId = uuid();
       const hash = await bycryptjs.hash(password, 10);
-      const tokens = await this.getTokens(userId, email);
+      const tokens = await this.getTokens(userId, email, Role.ADMIN);
       const hashrt = await bycryptjs.hash(tokens.refresh_token, 10);
 
       const newUser = await this.userRepository.save({
@@ -77,10 +96,15 @@ export class UserService {
     }
   }
 
-  async getTokens(userId: string, email: string): Promise<Tokens> {
+  async getTokens(
+    userId: string,
+    email: string,
+    role?: string,
+  ): Promise<Tokens> {
     const jwtPayload = {
       sub: userId,
       email,
+      role,
     };
 
     const [at, rt] = await Promise.all([

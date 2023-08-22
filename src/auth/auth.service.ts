@@ -3,8 +3,6 @@ import {
   ForbiddenException,
   Injectable,
 } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
 import { AuthDto } from './dto';
 import { Tokens } from './types';
@@ -12,11 +10,7 @@ import * as bycryptjs from 'bcryptjs';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private readonly userService: UserService,
-    private readonly jwtService: JwtService,
-    private readonly config: ConfigService,
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
   async signupLocal({ email, password }: AuthDto): Promise<Tokens> {
     const newUserDb = await this.userService.createUser(email, password);
@@ -36,7 +30,11 @@ export class AuthService {
     const passswordMatches = await bycryptjs.compare(password, userDb.password);
     if (!passswordMatches) throw new ForbiddenException('Access Denied');
 
-    const tokens = await this.userService.getTokens(userDb.id, userDb.email);
+    const tokens = await this.userService.getTokens(
+      userDb.id,
+      userDb.email,
+      userDb.role?.name,
+    );
 
     await this.userService.updateRtUser(userDb.id, tokens.refresh_token);
 
@@ -55,6 +53,8 @@ export class AuthService {
   async refreshTokens(userId: string, rt: string): Promise<Tokens> {
     const userDb = await this.userService.getUserById(userId);
 
+    console.log(userDb.role.name);
+
     if (!userDb || !userDb.hashrt)
       throw new ForbiddenException('Access Denied');
 
@@ -62,7 +62,11 @@ export class AuthService {
 
     if (!rtMatches) throw new ForbiddenException('Access Denied');
 
-    const tokens = await this.userService.getTokens(userDb.id, userDb.email);
+    const tokens = await this.userService.getTokens(
+      userDb.id,
+      userDb.email,
+      userDb.role?.name,
+    );
     await this.userService.updateRtUser(userDb.id, tokens.refresh_token);
 
     return tokens;

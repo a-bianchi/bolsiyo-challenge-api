@@ -8,11 +8,11 @@ import {
   UpdateDateColumn,
   Index,
   OneToOne,
+  JoinColumn,
 } from 'typeorm';
 
 @Entity()
 @Index('user_email_index', ['email'], { unique: true })
-@Index('user_role_index', ['roleId'], { unique: true })
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -35,7 +35,8 @@ export class User {
   @OneToOne(() => Shop, (shop) => shop.user)
   shop: Shop;
 
-  @OneToOne(() => Role, (role) => role.user)
+  @OneToOne(() => Role, (role) => role.user, { eager: true })
+  @JoinColumn({ name: 'roleId' })
   role: Role;
 
   @CreateDateColumn()
