@@ -7,6 +7,7 @@ import {
   Param,
   HttpCode,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CategoryCreateDto, CategoryResponseDto } from './dto';
@@ -21,6 +22,8 @@ import {
   CommonBadRequestErrorDto,
   CommonForbiddenErrorDto,
 } from 'src/common/dto';
+import { RoleGuard } from 'src/role/role.guard';
+import { Role } from 'src/role/role.decorator';
 
 @Controller('category')
 export class CategoryController {
@@ -35,6 +38,8 @@ export class CategoryController {
     type: CommonForbiddenErrorDto,
   })
   @Get('shop/:shopId')
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.OK)
   async getCategories(@Param('shopId') shopId: number): Promise<Category[]> {
     return this.categoryService.getCategoryByShopId(shopId);
@@ -53,6 +58,8 @@ export class CategoryController {
     type: CommonBadRequestErrorDto,
   })
   @Post()
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.CREATED)
   async createCategory(
     @Body() createCategoryDto: CategoryCreateDto,
@@ -69,6 +76,8 @@ export class CategoryController {
     type: CommonForbiddenErrorDto,
   })
   @Delete(':id')
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.OK)
   async deleteCategory(@Param('id') id: number): Promise<boolean> {
     const eliminate = await this.categoryService.deleteCategory(id);

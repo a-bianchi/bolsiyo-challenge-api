@@ -10,6 +10,7 @@ import {
   Query,
   Patch,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import {
@@ -30,6 +31,8 @@ import {
   ProductUpdateStockDto,
 } from './dto';
 import { QueryOptions } from './types';
+import { RoleGuard } from 'src/role/role.guard';
+import { Role } from 'src/role/role.decorator';
 
 @Controller('product')
 export class ProductController {
@@ -44,6 +47,8 @@ export class ProductController {
     type: CommonForbiddenErrorDto,
   })
   @Get('shop/:shopId')
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.OK)
   async getProductsByShopId(
     @Param('shopId') shopId: number,
@@ -70,6 +75,8 @@ export class ProductController {
     type: CommonBadRequestErrorDto,
   })
   @Post()
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.CREATED)
   async createProduct(
     @Body() createProductDto: ProductCreateDto,
@@ -90,6 +97,8 @@ export class ProductController {
     type: CommonBadRequestErrorDto,
   })
   @Patch(':id')
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.OK)
   async updateProduct(
     @Param('id', ParseIntPipe) id: number,
@@ -111,6 +120,8 @@ export class ProductController {
     type: CommonBadRequestErrorDto,
   })
   @Patch('stock/:id')
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.OK)
   async updateStock(
     @Param('id', ParseIntPipe) id: number,
@@ -129,6 +140,8 @@ export class ProductController {
     type: CommonForbiddenErrorDto,
   })
   @Delete(':id')
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.OK)
   async deleteProduct(@Param('id') id: number): Promise<boolean> {
     const eliminate = await this.productService.deleteProduct(id);

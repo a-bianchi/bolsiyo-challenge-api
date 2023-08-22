@@ -1,9 +1,18 @@
-import { Controller, Get, HttpCode, HttpStatus, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiForbiddenResponse, ApiOkResponse } from '@nestjs/swagger';
 import { CommonForbiddenErrorDto } from 'src/common/dto';
 import { ReportService } from './report.service';
 import { ReportResponseDto } from './dto';
 import { format, parse } from 'date-fns';
+import { Role } from 'src/role/role.decorator';
+import { RoleGuard } from 'src/role/role.guard';
 
 @Controller('report')
 export class ReportController {
@@ -17,6 +26,8 @@ export class ReportController {
     type: CommonForbiddenErrorDto,
   })
   @Get('')
+  @Role('ADMIN')
+  @UseGuards(RoleGuard)
   @HttpCode(HttpStatus.OK)
   async getProductsByDateRange(
     @Query('startDate') startDate: string,
