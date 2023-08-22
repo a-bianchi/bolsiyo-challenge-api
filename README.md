@@ -118,7 +118,7 @@ To run mysql database and service in the same container use the following comman
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/a-bianchi/bolsiyo-challenge-api/
    ```
 2. To run mysql database and service in the same container use the following command
    ```sh
@@ -129,7 +129,7 @@ To run mysql database and service in the same container use the following comman
       ```sh
       yarn start:dev
       ```
-5. Import the [postman collection](https://github.com/a-bianchi/bolsiyo-challenge-api/apiDocumentation/Challegen Bolsiyo.postman_collection.json) to be able to test (apiDocumentation folder)
+5. Import the <a href="https://github.com/a-bianchi/bolsiyo-challenge-api/apiDocumentation/Challegen Bolsiyo.postman_collection.json">postman collection</a> to be able to test (apiDocumentation folder)
 6. In the browser go to http://localhost:3000/documentation, to see the documentation
 7. You can test if the service is running
    ```sh
@@ -192,14 +192,6 @@ Project Link: [https://github.com/a-bianchi/bolsiyo-challenge-api](https://githu
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
