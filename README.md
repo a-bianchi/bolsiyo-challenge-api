@@ -129,7 +129,7 @@ To run mysql database and service in the same container use the following comman
       ```sh
       yarn start:dev
       ```
-5. Import the <a href="https://github.com/a-bianchi/bolsiyo-challenge-api/apiDocumentation/Challegen Bolsiyo.postman_collection.json">postman collection</a> to be able to test (apiDocumentation folder)
+5. Import the <a href="https://github.com/a-bianchi/bolsiyo-challenge-api/blob/develop/apiDcoumentation/Challegen%20Bolsiyo.postman_collection.json">postman collection</a> to be able to test (apiDocumentation folder)
 6. In the browser go to http://localhost:3000/documentation, to see the documentation
 7. You can test if the service is running
    ```sh
@@ -137,7 +137,7 @@ To run mysql database and service in the same container use the following comman
    'http://localhost:3000/ping' \
    -H 'accept: */*'
    ```
-   
+  
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
