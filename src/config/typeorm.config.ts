@@ -9,8 +9,8 @@ export const typeormConfig: DataSourceOptions = {
   database: process.env.MYSQL_DATABASE || 'bolsiyo',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/../migrations/*{.ts,.js}'],
+  //synchronize: true,
   migrationsRun: true,
   migrationsTableName: 'migrations',
-  synchronize: true,
   logging: process.env.NODE_ENV !== 'production',
 };

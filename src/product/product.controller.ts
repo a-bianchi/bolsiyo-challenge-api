@@ -123,7 +123,7 @@ export class ProductController {
     description: '400',
     type: CommonBadRequestErrorDto,
   })
-  @Patch('stock/:id')
+  @Patch(':id/stock-update')
   @Role('ADMIN')
   @UseGuards(RoleGuard)
   @ApiBearerAuth()

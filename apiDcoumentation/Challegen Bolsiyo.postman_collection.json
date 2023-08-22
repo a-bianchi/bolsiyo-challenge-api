@@ -61,7 +61,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"email\": \"test-admin@test.com\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -194,7 +194,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/v1/shop/user/1",
+							"raw": "{{url}}/v1/shop/user/3dde5f73-5989-458b-9d2b-23cceefb0d22",
 							"host": [
 								"{{url}}"
 							],
@@ -202,7 +202,7 @@
 								"v1",
 								"shop",
 								"user",
-								"1"
+								"3dde5f73-5989-458b-9d2b-23cceefb0d22"
 							]
 						}
 					},
@@ -305,14 +305,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/v1/category/2",
+							"raw": "{{url}}/v1/category/3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"v1",
 								"category",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -340,7 +340,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"cerveza-test\",\n    \"shopId\": 1,\n    \"categoryId\": 1,\n    \"pricePurchase\": 10,\n    \"priceSale\": 15,\n    \"stock\": 10\n}",
+							"raw": "{\n    \"name\": \"producto-test\",\n    \"shopId\": 1,\n    \"categoryId\": 1,\n    \"pricePurchase\": 10,\n    \"priceSale\": 15,\n    \"stock\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -415,7 +415,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quantity\": 15\n}",
+							"raw": "{\n    \"quantity\": 26\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -423,15 +423,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/v1/product/stock/2",
+							"raw": "{{url}}/v1/product/2/stock-update",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"v1",
 								"product",
-								"stock",
-								"2"
+								"2",
+								"stock-update"
 							]
 						}
 					},
@@ -462,14 +462,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/v1/product/2",
+							"raw": "{{url}}/v1/product/9",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"v1",
 								"product",
-								"2"
+								"9"
 							]
 						}
 					},
@@ -532,7 +532,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/v1/report?startDate=2023-08-20&endDate=2023-08-25",
+							"raw": "{{url}}/v1/report?startDate=2023-08-16&endDate=2023-08-25",
 							"host": [
 								"{{url}}"
 							],
@@ -543,7 +543,7 @@
 							"query": [
 								{
 									"key": "startDate",
-									"value": "2023-08-20"
+									"value": "2023-08-16"
 								},
 								{
 									"key": "endDate",

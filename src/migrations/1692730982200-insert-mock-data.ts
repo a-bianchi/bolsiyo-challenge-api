@@ -2,7 +2,7 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 import * as bycryptjs from 'bcryptjs';
 import { v4 as uuid } from 'uuid';
 
-export class Initial1692730982188 implements MigrationInterface {
+export class InsertMockData1692730982188 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.startTransaction();
 
