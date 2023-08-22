@@ -1,6 +1,6 @@
 import { DataSourceOptions } from 'typeorm';
 
-export const ormConfig: DataSourceOptions = {
+export const typeormConfig: DataSourceOptions = {
   type: 'mysql',
   host: process.env.MYSQL_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT, 10) || 3306,
@@ -8,6 +8,9 @@ export const ormConfig: DataSourceOptions = {
   password: process.env.MYSQL_PASSWORD || 'bolsiyo',
   database: process.env.MYSQL_DATABASE || 'bolsiyo',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+  migrations: [__dirname + '/../migrations/*{.ts,.js}'],
+  migrationsRun: true,
+  migrationsTableName: 'migrations',
   synchronize: true,
   logging: process.env.NODE_ENV !== 'production',
 };

@@ -18,6 +18,7 @@ import {
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiOkResponse,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 import { Product } from './product.entity';
 import {
@@ -49,6 +50,7 @@ export class ProductController {
   @Get('shop/:shopId')
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   async getProductsByShopId(
     @Param('shopId') shopId: number,
@@ -77,6 +79,7 @@ export class ProductController {
   @Post()
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.CREATED)
   async createProduct(
     @Body() createProductDto: ProductCreateDto,
@@ -99,6 +102,7 @@ export class ProductController {
   @Patch(':id')
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   async updateProduct(
     @Param('id', ParseIntPipe) id: number,
@@ -122,6 +126,7 @@ export class ProductController {
   @Patch('stock/:id')
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   async updateStock(
     @Param('id', ParseIntPipe) id: number,
@@ -142,6 +147,7 @@ export class ProductController {
   @Delete(':id')
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   async deleteProduct(@Param('id') id: number): Promise<boolean> {
     const eliminate = await this.productService.deleteProduct(id);

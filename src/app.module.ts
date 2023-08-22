@@ -3,7 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PingController } from './ping.controller';
 import { UserModule } from './user/user.module';
-import { ormConfig } from './config';
+import { typeormConfig } from './config';
 import { ShopModule } from './shop/shop.module';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
@@ -17,7 +17,7 @@ import { AtGuard } from './common/guards';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
-      useFactory: () => ormConfig,
+      useFactory: () => typeormConfig,
     }),
     UserModule,
     ShopModule,

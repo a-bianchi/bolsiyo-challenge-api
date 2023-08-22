@@ -17,6 +17,7 @@ import {
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiOkResponse,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 import {
   CommonBadRequestErrorDto,
@@ -40,6 +41,7 @@ export class CategoryController {
   @Get('shop/:shopId')
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   async getCategories(@Param('shopId') shopId: number): Promise<Category[]> {
     return this.categoryService.getCategoryByShopId(shopId);
@@ -60,6 +62,7 @@ export class CategoryController {
   @Post()
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.CREATED)
   async createCategory(
     @Body() createCategoryDto: CategoryCreateDto,
@@ -78,6 +81,7 @@ export class CategoryController {
   @Delete(':id')
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   async deleteCategory(@Param('id') id: number): Promise<boolean> {
     const eliminate = await this.categoryService.deleteCategory(id);

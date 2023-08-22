@@ -53,8 +53,6 @@ export class AuthService {
   async refreshTokens(userId: string, rt: string): Promise<Tokens> {
     const userDb = await this.userService.getUserById(userId);
 
-    console.log(userDb.role.name);
-
     if (!userDb || !userDb.hashrt)
       throw new ForbiddenException('Access Denied');
 

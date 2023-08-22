@@ -1,2 +1,2 @@
 export * from './swagger.config';
-export * from './orm.config';
+export * from './typeorm.config';

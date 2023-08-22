@@ -6,7 +6,11 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ApiForbiddenResponse, ApiOkResponse } from '@nestjs/swagger';
+import {
+  ApiForbiddenResponse,
+  ApiOkResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { CommonForbiddenErrorDto } from 'src/common/dto';
 import { ReportService } from './report.service';
 import { ReportResponseDto } from './dto';
@@ -28,6 +32,7 @@ export class ReportController {
   @Get('')
   @Role('ADMIN')
   @UseGuards(RoleGuard)
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   async getProductsByDateRange(
     @Query('startDate') startDate: string,
