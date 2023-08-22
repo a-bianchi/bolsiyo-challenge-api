@@ -194,7 +194,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/v1/shop/user/3dde5f73-5989-458b-9d2b-23cceefb0d22",
+							"raw": "{{url}}/v1/shop/user/a57ea115-fdc8-4386-a089-1bf98c8d49b6",
 							"host": [
 								"{{url}}"
 							],
@@ -202,7 +202,7 @@
 								"v1",
 								"shop",
 								"user",
-								"3dde5f73-5989-458b-9d2b-23cceefb0d22"
+								"a57ea115-fdc8-4386-a089-1bf98c8d49b6"
 							]
 						}
 					},

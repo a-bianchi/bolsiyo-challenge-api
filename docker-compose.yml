@@ -8,8 +8,6 @@ services:
       dockerfile: ./Dockerfile
       target: development
     command: yarn start:dev api-bolsiyo
-    env_file:
-      - ./.env
     restart: always
     depends_on:
       - db
@@ -21,7 +19,7 @@ services:
     environment:
       - PORT=3000
       - NODE_ENV=development
-      - MYSQL_HOST=db
+      - MYSQL_HOST=db-bolsiyo
       - MYSQL_USER=bolsiyo
       - MYSQL_PASSWORD=bolsiyo
       - MYSQL_DATABASE=bolsiyo
