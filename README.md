@@ -111,13 +111,18 @@ The environment necessary to run the service locally is detailed below.
    ```sh
    git clone https://github.com/a-bianchi/bolsiyo-challenge-api/
    ```
+   
 2. To run the MySQL database and API service in the same container, use the following command:
    ```sh
    make start
    ```
+
 3. Wait a few seconds for the containers to run and the migrations to be executed.
+
 4. Import the <a href="https://github.com/a-bianchi/bolsiyo-challenge-api/blob/develop/apiDcoumentation/Challegen%20Bolsiyo.postman_collection.json">postman collection</a> located in the "apiDocumentation" folder to be able to test.
+
 5. Open your browser and go to http://localhost:3000/documentation to see the API documentation.
+
 6. You can test if the service is running using the following command:
    ```sh
    curl -X 'GET' \
@@ -163,6 +168,7 @@ $ yarn run test:cov
 
 Follow these steps to test the API endpoints. These steps will guide you through the process of making requests and using Postman to automatically handle the authentication tokens.
 
+
 1. Sign In to Obtain Authentication Token
    * Start by making a POST request to the endpoint: POST /v1/auth/local/signin.
    * Set the request body to the following JSON:
@@ -174,6 +180,7 @@ Follow these steps to test the API endpoints. These steps will guide you through
     ```
     * This request is used to sign in and obtain an authentication token.
     * Once you send the request, Postman will automatically manage the received token and update the environment variables.
+
 2. Using Authenticated Tokens for Other Endpoints
     * With the authentication token obtained from the previous step, you now have authorization to access other endpoints that require authentication.
     * Postman will handle the token management for you, using the updated environment variables.
@@ -200,10 +207,6 @@ Alejo Bianchi - alejobianchi@gmail.com
 Project Link: [https://github.com/a-bianchi/bolsiyo-challenge-api](https://github.com/a-bianchi/bolsiyo-challenge-api)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
