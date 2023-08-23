@@ -213,4 +213,4 @@ Project Link: [https://github.com/a-bianchi/bolsiyo-challenge-api](https://githu
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/alejobianchi
 [product-screenshot]: images/models.svg
-[challenge-document]: https://github.com/a-bianchi/bolsiyo-challenge-api/challengeDocument/Prueba Técnica Senior Backend - Prueba Técnica Senior Backend.pdf
+[challenge-document]: https://github.com/a-bianchi/bolsiyo-challenge-api/blob/develop/challengeDocument/Prueba%20T%C3%A9cnica%20Senior%20Backend%20-%20Prueba%20T%C3%A9cnica%20Senior%20Backend.pdf
