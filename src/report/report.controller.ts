@@ -15,8 +15,8 @@ import { CommonForbiddenErrorDto } from '../common/dto';
 import { ReportService } from './report.service';
 import { ReportResponseDto } from './dto';
 import { format, parse } from 'date-fns';
-import { Role } from '../role/role.decorator';
-import { RoleGuard } from '../role/role.guard';
+import { Role } from '../common/decorators/role.decorator';
+import { RoleGuard } from '../common/guards/role.guard';
 
 @Controller('report')
 export class ReportController {
