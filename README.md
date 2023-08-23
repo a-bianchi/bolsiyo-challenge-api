@@ -17,16 +17,14 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/a-bianchi/bolsiyo-challenge-api">
-    <img src="images/logo.webp" alt="Logo" width="80" height="80">
+    <img src="images/logo.webp" alt="Logo" width="100" height="100">
   </a>
 
 <h3 align="center">Challenge</h3>
@@ -37,7 +35,6 @@
     <a href="https://github.com/a-bianchi/bolsiyo-challenge-api"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/a-bianchi/bolsiyo-challenge-api">View Demo</a>
   </p>
 </div>
 
@@ -84,13 +81,12 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [Nest.js](https://docs.nestjs.com/)
 * [Typescript](https://www.typescriptlang.org/)
 * [MySql](https://www.mysql.com/)
-* [Sequelize](https://sequelize.org/)
+* [Typeorm](https://typeorm.io/)
 * [Docker](https://www.docker.com/)
 * [Swagger](https://swagger.io/)
 * [Jest](https://jestjs.io/)
 * [JWT](https://jwt.io/)
 * [Husky](https://www.npmjs.com/package/husky)
-* [Github Actions](https://github.com/features/actions)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -107,31 +103,22 @@ The environment necessary to run the service locally is detailed below.
 - Yarn (>=1.22.0)
 - Node (>=18.0.0)
 - Docker (>=4.21.1)
+- Docker-compose (>=2.0.0)
   
-To run mysql database and service in the same container use the following command.
-* bash
-  ```sh
-  make start
-  ```
-
 ### Installation
 
 1. Clone the repo
    ```sh
    git clone https://github.com/a-bianchi/bolsiyo-challenge-api/
    ```
-2. To run mysql database and service in the same container use the following command
+2. To run the MySQL database and API service in the same container, use the following command:
    ```sh
    make start
    ```
-3. Wait a few seconds for the containers to run and the migrations to be executed
-   1. If the "api-pocket" container fails, you can test it from vscode with the following command
-      ```sh
-      yarn start:dev
-      ```
-5. Import the <a href="https://github.com/a-bianchi/bolsiyo-challenge-api/blob/develop/apiDcoumentation/Challegen%20Bolsiyo.postman_collection.json">postman collection</a> to be able to test (apiDocumentation folder)
-6. In the browser go to http://localhost:3000/documentation, to see the documentation
-7. You can test if the service is running
+3. Wait a few seconds for the containers to run and the migrations to be executed.
+4. Import the <a href="https://github.com/a-bianchi/bolsiyo-challenge-api/blob/develop/apiDcoumentation/Challegen%20Bolsiyo.postman_collection.json">postman collection</a> located in the "apiDocumentation" folder to be able to test.
+5. Open your browser and go to http://localhost:3000/documentation to see the API documentation.
+6. You can test if the service is running using the following command:
    ```sh
    curl -X 'GET' \
    'http://localhost:3000/ping' \
@@ -171,6 +158,28 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+<!-- TEST API EXAMPLES -->
+## Testing the API
+
+Follow these steps to test the API endpoints. These steps will guide you through the process of making requests and using Postman to automatically handle the authentication tokens.
+
+1. Sign In to Obtain Authentication Token
+   * Start by making a POST request to the endpoint: POST /v1/auth/local/signin.
+   * Set the request body to the following JSON:
+    ```json
+    {
+      "email": "test-admin@test.com",
+      "password": "123456"
+    }
+    ```
+    * This request is used to sign in and obtain an authentication token.
+    * Once you send the request, Postman will automatically manage the received token and update the environment variables.
+2. Using Authenticated Tokens for Other Endpoints
+    * With the authentication token obtained from the previous step, you now have authorization to access other endpoints that require authentication.
+    * Postman will handle the token management for you, using the updated environment variables.
+
+Remember that these steps assume you have set up Postman to work with environment variables and that Postman automatically manages the token for you. This approach simplifies the testing process by taking care of the authentication details behind the scenes.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -203,4 +212,4 @@ Project Link: [https://github.com/a-bianchi/bolsiyo-challenge-api](https://githu
 [license-url]: https://github.com/a-bianchi/bolsiyo-challenge-api/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/alejobianchi
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/models.svg
