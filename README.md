@@ -24,7 +24,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/a-bianchi/bolsiyo-challenge-api">
-    <img src="images/logo.webp" alt="Logo" width="100" height="100">
+    <img src="images/logo.webp" alt="Logo" width="120" height="100">
   </a>
 
 <h3 align="center">Challenge</h3>
@@ -70,7 +70,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+This project is an API designed to streamline inventory management for users. It empowers users to oversee their businesses, categorize products, and monitor stock changes. The API's core functionality includes updating product stock, which triggers stock history recording along with timestamps for each update. This documentation offers a concise guide on interacting with the API.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -213,3 +213,4 @@ Project Link: [https://github.com/a-bianchi/bolsiyo-challenge-api](https://githu
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/alejobianchi
 [product-screenshot]: images/models.svg
+[challenge-document]: https://github.com/a-bianchi/bolsiyo-challenge-api/challengeDocument/Prueba Técnica Senior Backend - Prueba Técnica Senior Backend.pdf
