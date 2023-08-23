@@ -68,7 +68,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]()
 
 This project is an API designed to streamline inventory management for users. It empowers users to oversee their businesses, categorize products, and monitor stock changes. The API's core functionality includes updating product stock, which triggers stock history recording along with timestamps for each update. This documentation offers a concise guide on interacting with the API.
 
